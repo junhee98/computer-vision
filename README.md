@@ -7,3 +7,5 @@
 높은 객체 신뢰도를 가진 위치를 선택해 객체 카테고리 파악
 
 구글에서 제공하는 object detection : http://solarisailab.com/archives/2387
+
+https://www.edwith.org/deeplearningai4/lecture/34953?isDesc=false
