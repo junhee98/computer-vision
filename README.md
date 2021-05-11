@@ -1,11 +1,13 @@
 # computer-vision
 
-원본이미지를 그리드로 나눔
+클릭한 이미지 분류 (CNN)
 
-각 그리드에 대해 그리드 중앙을 중심으로 미리 정의된 형태로 지정된 경계박스의 개수(앵커박스)를 예측하고 이를 기반으로 신뢰도 계산
+5/4
+1. 데이터셋 - https://public.roboflow.com/
+2. CNN 모델 분석 - https://www.boostcourse.org/ai218/lecture/410014?isDesc=false
+3. 가중치 학습방법 - 미해결 문제
 
-높은 객체 신뢰도를 가진 위치를 선택해 객체 카테고리 파악
-
-구글에서 제공하는 object detection : http://solarisailab.com/archives/2387
-
-https://www.edwith.org/deeplearningai4/lecture/34953?isDesc=false
+5/11
+1. 카테고리 정립 (동물,식물, 등등)
+2. 이미지 클릭 구현하는것 고민해보기 (아이디어만)
+3. CNN 모델 구현
