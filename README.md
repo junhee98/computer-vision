@@ -10,7 +10,7 @@
 
 5/11
 1. 카테고리 정립 (동물,식물, 등등) - https://www.kaggle.com/alessiocorrado99/animals10
-2. 이미지 클릭 구현하는것 고민해보기 (아이디어만)
+2. 이미지 클릭 구현하는것 고민해보기 (아이디어만) - 미해결 문제
 3. CNN 모델 구현 (SimpleConvNet_original 기반)
 
 
