@@ -14,7 +14,7 @@ import matplotlib.pyplot as plt
 
 
 #파일 열기
-path = './OIF-e2bexWrojgtQnAPPcUfOWQ.jpeg'
+path = './raw-img/cane/OIF-e2bexWrojgtQnAPPcUfOWQ.jpeg'
 
 image_pil = Image.open(path)
 image = np.array(image_pil)
@@ -34,29 +34,6 @@ plt.show()
 
 
 #이미지 보기
-
 plt.imshow(image)
-plt.show()
-
-
-
-#이미지 흑백으로 열기
-image_pil = Image.open(path).convert("L")
-image_bw = np.array(image_pil)
-
-plt.imshow(image_bw,'gray')
-plt.show()
-
-
-#이미지 red, blue로 열기
-plt.imshow(image_bw,'RdBu')
-plt.show()
-
-#이미지 jet로 열기
-plt.imshow(image_bw,'jet')
-plt.show()
-
-#color bar 추가하기
-plt.imshow(image_bw,'jet')
 plt.colorbar()
 plt.show()
