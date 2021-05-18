@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Tue May 11 21:37:53 2021
+Created on Tue May 11 15:18:06 2021
 
 @author: taeso
 """
@@ -11,6 +11,8 @@ from common.gradient import numerical_gradient #수치미분함수
 from collections import OrderedDict
 import pickle
 import matplotlib.pyplot as plt
+from sklearn import datasets
+from sklearn.model_selection import train_test_split
 
 class SimpleConvNet:
     """
@@ -153,9 +155,9 @@ class SimpleConvNet:
             
         #결과 저장
         grads = {}
-        grads['W1'], grads['b1'] = self.layers['Conv1'], self.layers['Conv1'].db
-        grads['W2'], grads['b2'] = self.layers['Affine1'], self.layers['Affine1'].db
-        grads['W3'], grads['b3'] = self.layers['Affine2'], self.layers['Affine2'].db
+        grads['W1'], grads['b1'] = self.layers['Conv1'].dW, self.layers['Conv1'].db
+        grads['W2'], grads['b2'] = self.layers['Affine1'].dW, self.layers['Affine1'].db
+        grads['W3'], grads['b3'] = self.layers['Affine2'].dW, self.layers['Affine2'].db
         
         return grads
         
@@ -187,6 +189,13 @@ class SimpleConvNet:
             
 #데이터 읽기
 #(x_train, t_train), (x_test, t_test) = load_mnist(flatten=False)
+X, y = datasets.fetch_openml('mnist_784', version=1, return_X_y=True)
+x_train, x_test, t_train, t_test = train_test_split(X, y, test_size=0.15, shuffle=True, random_state=1000)
+
+x_train = x_train.reshape(x_train.shape[0], 1, 28, 28).astype('int32')
+x_test = x_test.reshape(x_test.shape[0], 1, 28, 28).astype('int32')
+t_train = t_train.astype('int32')
+t_test = t_test.astype('int32')
 
 max_eporchs = 20
 
@@ -202,7 +211,7 @@ print("Saved Network Parameters!")
 iters_num = 10000 # 반복 횟수를 적절히 설정한다.
 train_size = x_train.shape[0] # 60000개
 batch_size = 100 #미니배치 크기
-learning_rate = 0.1
+learning_rate = 0.01
 train_loss_list = []
 train_acc_list = []
 test_acc_list = []
@@ -223,9 +232,7 @@ for i in range(iters_num): #10000
     
     #기울기 계산
     #grad = network.numerical_gradient(x_batch, t_batch)
-    print(x_batch.shape)
     grad = network.gradient(x_batch, t_batch)
-    
     
     #매개변수 갱신
     for key in ('W1', 'b1', 'W2', 'b2'):
